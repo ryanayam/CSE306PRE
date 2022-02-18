@@ -35,25 +35,34 @@ void csvHeader(int c, char **arg) {
 
 void csvRecords(FILE *f, field, value) {
         char row[MAXCHAR];
-	char **headerArr[] = {};
-        while(feof(f) != true) {
-                if (header == true) {
-			int i = 0;
-			fgets(row, MAXCHAR, f);
-			char *token = strtok(row, ",");
-			while (token != NULL) {
-				headerArr[i] = token;
-				i = i + 1;
-			}
-		}
-		fgets(row, MAXCHAR, f);
-		char *token = strtok(row, ",");
-		count = 0
-		while (token != NULL) {
-			if (count == atoi(field))
-			count = count + 1;
-		}
-                printf("%s", row);
+        while(fgets(row, MAXCHAR, f)) {
+			char *token = strtok(line, ",");
+			int col = atoi(field);
+			if (col == 0 && strcmp(field, "0") == 0) {
+				int count = 0;
+				while (token != NULL) {
+					//go to next column
+					if (count == col && strcmp(token, value) == 0) {
+						printf("%s", row);
+						token = NULL;
+					} else {
+						token = strtok(NULL, ",");
+						count = count + 1;
+					}
+				}
+			} else {
+				int count = 0;
+				while (token != NULL) {
+					if (count == col && strcmp(token, value) == 0) {
+						printf("%s", row);
+						token = NULL;
+					} else {
+						//go to next column
+						token = strtok(NULL, ",");
+						count = count + 1;
+					}
+				}
+			}	
         }
 }
 
