@@ -33,37 +33,42 @@ void csvHeader(int c, char **arg) {
         return;
 }
 
-void csvRecords(FILE *f, field, value) {
-        char row[MAXCHAR];
-        while(fgets(row, MAXCHAR, f)) {
-			char *token = strtok(line, ",");
-			int col = atoi(field);
-			if (col == 0 && strcmp(field, "0") == 0) {
-				int count = 0;
-				while (token != NULL) {
+void csvRecords(FILE *f, char *field, char *value) {
+	char row[MAXCHAR];
+	while(feof(f) != true) {
+		fgets(row, MAXCHAR, f);
+		char *toPrint = strdup(row);
+		char *token = strtok(row, ",");
+		int col = atoi(field);
+		printf("%d", col);
+		if (col == 0 && strcmp(field, "0") == 0) {
+			int count = 0;
+			while (token != NULL) {
+				//go to next column
+				if (count == col && strcmp(token, value) == 0) {
+					printf("%s", toPrint);
+					token = NULL;
+				} else {
+					token = strtok(NULL, ",");
+					count = count + 1;
+				}
+			}
+		} else if (col < 0) {
+			int count = 0;
+			while (token != NULL) {
+				if (count == col && strcmp(token, value) == 0) {
+					printf("%s", toPrint);
+					token = NULL;
+				} else {
 					//go to next column
-					if (count == col && strcmp(token, value) == 0) {
-						printf("%s", row);
-						token = NULL;
-					} else {
-						token = strtok(NULL, ",");
-						count = count + 1;
-					}
+					token = strtok(NULL, ",");
+					count = count + 1;
 				}
-			} else {
-				int count = 0;
-				while (token != NULL) {
-					if (count == col && strcmp(token, value) == 0) {
-						printf("%s", row);
-						token = NULL;
-					} else {
-						//go to next column
-						token = strtok(NULL, ",");
-						count = count + 1;
-					}
-				}
-			}	
-        }
+			}
+		} else {
+			printf("why");
+		}
+	}
 }
 
 int main(int argc, char **argv) {
