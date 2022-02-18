@@ -14,10 +14,18 @@ int main(int argc, char **argv) {
 		fprint("File not found. Please try again");
 		exit(EXIT_FAILURE)
 	}
+	int cnt = 0;
+	char ch;
 	for (int i = 0; i < argc-1; i++) {
 		argu = argv[i];
 		if (argu == "-f") {
-			// insert f function
+		  ch = fgetc(fp);
+		  if(ch == ','){
+		    cnt++;
+		  }
+		  else{
+		    return cnt + 1;
+		  }
 		} else if (argu == "-r") {
 			// insert r function
 		} else if (argu == "-h") {
