@@ -19,13 +19,6 @@ int main(int argc, char **argv) {
 	for (int i = 0; i < argc-1; i++) {
 		argu = argv[i];
 		if (argu == "-f") {
-		  ch = fgetc(fp);
-		  if(ch == ','){
-		    cnt++;
-		  }
-		  else{
-		    return cnt + 1;
-		  }
 		} else if (argu == "-r") {
 			// insert r function
 		} else if (argu == "-h") {
@@ -46,7 +39,25 @@ int main(int argc, char **argv) {
 
 int csvF(FILE *f){
 	// file comes opened already
-	return 0
+  int cnt = 0;
+  char str[61];
+  
+  if(f == NULL){
+    printf("File not found. Please try again");
+  }
+  else{
+    while(fgets(str, 61, f)!= NULL){
+      if(str == ','){
+	cnt = cnt + 1;
+      }
+      else{
+	break;
+      }
+    } 
+    fclose(f);
+    printf("%d", cnt + 1);
+  }
+  return (0);
 }
 
 int csvR(FILE *f){

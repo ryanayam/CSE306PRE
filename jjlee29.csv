@@ -1,1 +1,4 @@
 DATE,UBIT,DURATION,ACTIVITY & TOOL DESCRIPTION
+02/08/2022, jjlee29, 30 minutes, Created main.c starter code and created activity log using powershell
+02/17/2022, jjlee29, 25 minutes, Start the base of the -f function to display the number of fields in the first record of file
+02/18/2022, jjlee29, 1hr 20minutes, Continue to fix bugs and write code for the -f function  
