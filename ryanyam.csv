@@ -1,2 +1,5 @@
 DATE,UBIT,DURATION,ACTIVITY & TOOL DESCRIPTION
-2/8/2022,ryanyam,10 minutes,Created main.c starter code and Activity log using powershell and VSCode
+2/8/2022,ryanyam,30 minutes,Created main.c starter code and Activity log using powershell and VSCode
+2/14/22, ryanyam,1 hour, Worked on records and fixed main function using emacs in an ssh to timberlake.
+2/17/22, ryanyam,3 hour, Attempted to work around fields being a number or string, but did not find a solution
+2/18/22, ryanyam,1 hour, Tried to finish up to get a working code but could not make any advances.
