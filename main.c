@@ -20,12 +20,23 @@ int main(int argc, char **argv) {
 			// insert f function
 		} else if (argu == "-r") {
 			// insert r function
-		} else if (argu == "-h") {
-			header = true;
+		       if (header == true){
+		          row_number = 0;
+			  chara = getchar(fp);
+			  while (chara != EOF && chara == '\n') {
+			    row_number += 1; 
+			  }	 
+		       }
+		       printf("%d",row_number - 1);
+		      
+	        } else if (argu == "-h") {
+		      header == true;;
 		} else if (argu == "-max") {
 
 		} else if (argu == "-min") {
-			
+		       if (header == true) {
+			 
+	        }	   
 		} else if (argu == "-mean") {
 			
 		} else if (argu == "-records") {
@@ -35,7 +46,6 @@ int main(int argc, char **argv) {
 	exit(EXIT_SUCCESS)
 	return 0
 }
-
 int csvF(FILE *f){
 	// file comes opened already
 	return 0
